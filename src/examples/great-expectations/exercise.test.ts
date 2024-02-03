@@ -12,49 +12,48 @@ import { KanbanBoard } from '$lib/kanban-board';
  * toThrowError: https://vitest.dev/api/expect.html#tothrowerror
  */
 
-it.todo(
-  'should pass if the two numbers would add up correctly in a language other than JavaScript',
-  () => {
-    expect(0.2 + 0.1).toEqual(0.3);
-  },
-);
+it('should pass if the two numbers would add up correctly in a  language other than JavaScript', () => {
+  expect(0.2 + 0.1).toBeCloseTo(0.3);
+});
 
 describe('createPerson', () => {
-  it.todo('should create an instance of a person', () => {
+  it('should create an instance of a person', () => {
     const person = createPerson('Ada Lovelace');
     expect.hasAssertions();
+    expect(person).toBeInstanceOf(Person);
     // Verify that person is an instance of a Person.
   });
 });
 
 describe('Kanban Board', () => {
-  it.todo('should include "Backlog" in board.statuses', () => {
+  it('should include "Backlog" in board.statuses', () => {
     const board = new KanbanBoard('Things to Do');
     expect.hasAssertions();
+    expect(board.statuses).toContain('Backlog');
     // Verify that board.statuses contains "Backlog".
   });
 
-  it.todo('should *not* include "Bogus" in board.statuses', () => {
+  it('should *not* include "Bogus" in board.statuses', () => {
     const board = new KanbanBoard('Things to Do');
     expect.hasAssertions();
+    expect(board.statuses).not.toContain('Bognus');
     // Verify that board.statuses does not contain "Bogus".
   });
 
-  it.todo(
-    'should include an added status in board.statuses using #addStatus',
-    () => {
-      const board = new KanbanBoard('Things to Do');
-      expect.hasAssertions();
-      // Use board.addStatus to add a status.
-      // Verify that the new status is—in fact—now in board.statuses.
-    },
-  );
+  it('should include an added status in board.statuses using #addStatus', () => {
+    const board = new KanbanBoard('Things to Do');
+    board.addStatus('Verifying');
+    expect(board.statuses).toContain('Verifying');
+    // Use board.addStatus to add a status.
+    // Verify that the new status is—in fact—now in board.statuses.
+  });
 
-  it.todo('should remove a status using #removeStatus', () => {
+  it('should remove a status using #removeStatus', () => {
     const board = new KanbanBoard('Things to Do');
     expect.hasAssertions();
     // Use board.removeStatus to remove a status.
-
+    board.removeStatus('Backlog');
+    expect(board.statuses).not.toContain('Backlog');
     // You can be clever or you can just assume "Backlog" is in board.statuses
     // by default.
 

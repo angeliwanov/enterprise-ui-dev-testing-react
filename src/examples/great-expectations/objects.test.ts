@@ -9,7 +9,7 @@ describe('toBe', () => {
     expect([1, 2, 3]).toBe([1, 2, 3]);
   });
 
-  test.fails('functions should to be strictly equal', () => {
+  test.fails('functions should be strictly equal', () => {
     expect(() => {}).toBe(() => {});
   });
 });
