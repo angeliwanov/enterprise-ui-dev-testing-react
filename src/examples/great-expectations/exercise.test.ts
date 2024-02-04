@@ -48,12 +48,17 @@ describe('Kanban Board', () => {
     // Verify that the new status is—in fact—now in board.statuses.
   });
 
-  it('should remove a status using #removeStatus', () => {
+  it('should remove a status using #removeStatus', async () => {
     const board = new KanbanBoard('Things to Do');
     expect.hasAssertions();
     // Use board.removeStatus to remove a status.
-    board.removeStatus('Backlog');
-    expect(board.statuses).not.toContain('Backlog');
+    const status = 'Backlog';
+
+    const returnValue = board.removeStatus(status);
+
+    expect(board.statuses).not.toContain(status);
+
+    expect(returnValue).resolves.toBe(4);
     // You can be clever or you can just assume "Backlog" is in board.statuses
     // by default.
 
