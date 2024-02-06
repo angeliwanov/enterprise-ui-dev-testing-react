@@ -20,7 +20,13 @@ test('it should increment when the "Increment" button is pressed', async () => {
   expect(currentCount).toHaveTextContent('1');
 });
 
-test.todo('it should render the component with an initial count', () => {});
+test.todo('it should render the component with an initial count', () => {
+  const user = userEvent.setup();
+  render(<Counter />);
+
+  const currentCount = screen.getByTestId('current-count');
+  expect(currentCount).toHaveTextContent('0');
+});
 
 test.todo(
   'it should reset the count when the "Reset" button is pressed',
