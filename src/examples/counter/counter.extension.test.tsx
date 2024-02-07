@@ -1,5 +1,6 @@
 import { render, screen } from './test/utilities.solution';
 import Counter from '.';
+import '@testing-library/jest-dom/extend-expect';
 
 test('it should render the component', () => {
   render(<Counter />);
